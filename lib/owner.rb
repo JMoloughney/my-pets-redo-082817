@@ -2,17 +2,8 @@ class Owner
 
   ALL = []
 
-  def self.all
-    ALL
-  end
-
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.length
-  end
+  extend Persistable::ClassMethods # extend means we are importing class level methods
+  include Persistable::InstanceMethods #include means instance level methods
 
   attr_accessor :name, :pets
   attr_reader :species
@@ -21,7 +12,7 @@ class Owner
     @name = name
     @species = 'human'
     @pets = {:fishes => [], :dogs => [], :cats => []}
-    ALL << self
+    super
   end
 
   def say_species
