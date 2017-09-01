@@ -2,6 +2,8 @@ class Owner
 
   ALL = []
 
+  extend Persistable::ClassMethods # extend signifies bringing in class level methods
+  include Persistable::InstanceMethods # include signifies bringing in instance level methods
 
   attr_accessor :name, :pets
   attr_reader :species
@@ -10,19 +12,7 @@ class Owner
     @name = name
     @species = 'human'
     @pets = {:fishes => [], :dogs => [], :cats => []}
-    ALL << self
-  end
-
-  def self.all
-    ALL
-  end
-
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.length
+    super
   end
 
   def say_species
@@ -73,3 +63,25 @@ class Owner
  end
 
 end
+
+
+
+
+
+
+
+
+# class User < ActiveRecord::Base
+#
+# end
+#
+# class ApplicationController < Sinatra::Base
+#
+#
+# module ActiveRecord
+#
+#   class Base
+#
+#     # ....
+#   end
+# end
