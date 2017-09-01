@@ -1,12 +1,10 @@
-class Cat < Pet
-
-  attr_reader :num_lives
+class Cat
+  attr_reader :name
+  attr_accessor :mood
 
   def initialize(name)
-    super
-
-    @num_lives = 9
-
+    @name = name
+    @mood = 'nervous'
   end
-
+  
 end
